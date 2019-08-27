@@ -12,10 +12,9 @@ namespace ServiceA.Controllers
     [ApiController]
     public class AworldController : ControllerBase
     {
-        //https://localhost:44340/api/aworld
-        // GET api/aworld
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        //https://localhost:44340/api/aworld/healthcheck
+        [HttpGet("HealthCheck")]
+        public ActionResult<IEnumerable<string>> HealthCheck()
         {
             return new string[] { "Hello", "ServiceA - Aworld" };
         }

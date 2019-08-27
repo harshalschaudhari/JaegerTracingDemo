@@ -78,6 +78,8 @@ namespace DistributedTracingDemo
 
             var url = $"/api/aworld/{_testId}";
             string spanName = "MainWork";
+            Guid guid = Guid.NewGuid();
+            Console.WriteLine("guid:{0}", guid);
 
             var traceBuilder = new TraceBuilder(tracer);
             var client = new HttpClient
@@ -86,7 +88,8 @@ namespace DistributedTracingDemo
             };
 
             traceBuilder.WithSpanName(spanName)
-               .WithHttpCall(client, url, HttpMethod.Get)
+               .WithTag(new OpenTracing.Tag.StringTag("MyCorelationId"), guid.ToString())
+               .WithHttpCall(client, url, HttpMethod.Get)               
                .TraceIt(() =>
                {
                    CallServiceA(client, url);
