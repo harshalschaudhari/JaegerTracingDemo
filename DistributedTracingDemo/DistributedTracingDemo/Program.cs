@@ -55,7 +55,7 @@ namespace DistributedTracingDemo
 
             var url = $"/api/aworld/{_testId}";
 
-            traceBuilder.WithSpanName("MainWork")
+            traceBuilder.WithSpanName("TrialCallWork")
                 .WithHttpCall(client, url, HttpMethod.Get)
                 .TraceIt(() =>
                 {
